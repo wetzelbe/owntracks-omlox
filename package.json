@@ -1,0 +1,17 @@
+{
+  "name": "owntracks-omlox",
+  "version": "0.0.1",
+  "description": "Connects the Owntracks system to the omlox hub and synchronises position-data in both directions",
+  "main": "owntracks-omlox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node owntracks-omlox.js"
+  },
+  "author": "Benedict Wetzel",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "mqtt": "^4.1.0",
+    "websocket": "^1.0.31"
+  }
+}
