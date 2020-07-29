@@ -32,7 +32,7 @@ try {
         password = process.env.MQTT_PASSWORD
     }
 } catch (error) {
-    console.log("Failed reading environment variables, continuing with standard values!")
+    console.log("Failed reading environment variables, exiting!")
     console.log()
     process.exit()
 }
