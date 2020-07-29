@@ -51,11 +51,12 @@ try {
     process.exit()
 }
 var mqttclient
-
+console.log(noauth)
 if (noauth) {
+    console.log('in noauth = true')
     mqttclient = mqtt.connect({
         host: mqttBroker,
-        port: 1883,
+        port: 1883
     })
 }
 else {
