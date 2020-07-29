@@ -8,15 +8,19 @@ var commandLineArgs = require('command-line-args')
 var mqttBroker = 'mqtt:localhost'  // MQTT Broker to connect to
 var omloxhostname = 'localhost'
 var omloxport = 8081
+var noauth = true
+var username
+var password
 
 const optionDefinitions = [
-    { name: 'omlox-hostname', alias: 'o', type: String},
-    { name: 'omlox-port', alias: 'p', type: String},
-    { name: 'mqtt-hostname', alias: 'n', type: String},
+    { name: 'omlox-hostname', alias: 'o', type: String },
+    { name: 'omlox-port', alias: 'r', type: String },
+    { name: 'mqtt-hostname', alias: 'n', type: String },
+    { name: 'mqtt-username', alias: 'u', type: String },
+    { name: 'mqtt-password', alias: 'p', type: String }
 ]
 
-function printOptions(optionsToPrint)
-{
+function printOptions(optionsToPrint) {
     optionsToPrint.forEach(option => {
         console.log("-" + option.alias + "  " + option.name)
     })
@@ -26,17 +30,19 @@ var options
 try {
     options = commandLineArgs(optionDefinitions)
     console.log(options)
-    if (options.hasOwnProperty('omlox-hostname'))
-    {
+    if (options.hasOwnProperty('omlox-hostname')) {
         omloxhostname = options['omlox-hostname']
     }
-    if (options.hasOwnProperty('omlox-port'))
-    {
+    if (options.hasOwnProperty('omlox-port')) {
         omloxport = options['omlox-port']
     }
-    if (options.hasOwnProperty('mqtt-hostname'))
-    {
+    if (options.hasOwnProperty('mqtt-hostname')) {
         mqttBroker = options['mqtt-hostname']
+    }
+    if (options.hasOwnProperty('mqtt-username') && options.hasOwnProperty('mqtt-password')) {
+        noauth = false
+        username = options['mqtt-username']
+        password = options['mqtt-password']
     }
 } catch (error) {
     console.log("Parsing options failed, options are:")
@@ -44,7 +50,22 @@ try {
     console.log()
     process.exit()
 }
-var mqttclient = mqtt.connect(mqttBroker)
+var mqttclient
+
+if (noauth) {
+    mqttclient = mqtt.connect({
+        host: mqttBroker,
+        port: 1883,
+    })
+}
+else {
+    mqttclient = mqtt.connect({
+        host: mqttBroker,
+        port: 1883,
+        username: username,
+        password: password
+    })
+}
 var WebSocketClient = require('websocket').client
 var wsclient = new WebSocketClient()
 function buildHTTPReq(method, path) {
@@ -165,8 +186,7 @@ wsclient.on('connect', function (connection) {          // Gets Locations from O
                         tid: location.provider_id,
                         tst: Math.floor(new Date() / 1000)
                     }
-                    if (location.hasOwnProperty('course'))
-                    {
+                    if (location.hasOwnProperty('course')) {
                         omloxLocation.cog = location.course
                     }
                     mqttclient.publish("owntracks/omlox/" + location.source + "." + location.provider_id, JSON.stringify(omloxLocation))
