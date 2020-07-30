@@ -13,5 +13,9 @@
     "command-line-args": "^5.1.1",
     "mqtt": "^4.1.0",
     "websocket": "^1.0.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wetzelbe/owntracks-omlox.git"
   }
 }
