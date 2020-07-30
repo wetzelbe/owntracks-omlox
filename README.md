@@ -18,10 +18,14 @@ Command-line-arguments are:
 
 
 ## Environment Variables
-
+`OMLOX_HOSTNAME`:
+`OMLOX_PORT`:
+`MQTT_HOSTNAME`:
+`MQTT_USERNAME`:
+`MQTT_PASSWORD`:
 
 
 ## Docker Installation
 
-When the omlox hub is running in another Container on the same machine, you have to link the docker conntainers together:  
+When the omlox hub is running in another Container on the same machine, you have to link the docker containers together:  
 >docker run --name name --link omlox-container-name:server owntracks-omlox:0.0.1 -- -n mqttBroker -u username -p password -o server
