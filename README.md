@@ -10,19 +10,19 @@ To configure the system, you can either use command line arguments or you can us
 ## Command Line Arguments
 
 Command-line-arguments are:  
-  `-o`: 'omlox-hostname'  
-  `-r`: 'omlox-port'  
-  `-n`: 'mqtt-hostname'  
-  `-u`: 'mqtt-username'  
-  `-p`: 'mqtt-password'  
+* `-o`: 'omlox-hostname'  
+* `-r`: 'omlox-port'  
+* `-n`: 'mqtt-hostname'  
+* `-u`: 'mqtt-username'  
+* `-p`: 'mqtt-password'  
 
 
 ## Environment Variables
-`OMLOX_HOSTNAME`:  
-`OMLOX_PORT`:  
-`MQTT_HOSTNAME`:  
-`MQTT_USERNAME`:  
-`MQTT_PASSWORD`:  
+* `OMLOX_HOSTNAME`:  
+* `OMLOX_PORT`:  
+* `MQTT_HOSTNAME`:  
+* `MQTT_USERNAME`:  
+* `MQTT_PASSWORD`:  
 
 
 ## Docker Installation
