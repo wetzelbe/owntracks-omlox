@@ -1,6 +1,12 @@
 # owntracks-omlox
 This Node.js program allows synchronisation between a Owntracks system and the omlox hub. It will share positiondata in both directions.
 
+## Configuration
+
+To configure the system, you can either use command line arguments or you can use environment variables.  
+
+
+
 ## Command Line Arguments
 
 Command-line-arguments are:  
