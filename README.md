@@ -6,9 +6,9 @@ This Node.js program allows synchronisation between a Owntracks system and the o
 Command-line-arguments are:  
   `-o`: 'omlox-hostname'  
   `-r`: 'omlox-port'  
-  `-n`: 'mqtt-hostname'
-  `-u`: 'mqtt-username'
-  `-p`: 'mqtt-password'
+  `-n`: 'mqtt-hostname'  
+  `-u`: 'mqtt-username'  
+  `-p`: 'mqtt-password'  
 
 
 ## Environment Variables
