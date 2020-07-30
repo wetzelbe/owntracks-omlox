@@ -18,4 +18,4 @@ Command-line-arguments are:
 ## Docker Installation
 
 When the omlox hub is runninng on localhost, you have to link the docker conntainers together:  
-    docker run --name <name> --link <omlox-container-name>:server owntracks-omlox:0.0.1 -- -n <mqttBroker> -u username -p password -o server
+    `docker run --name <name> --link <omlox-container-name>:server owntracks-omlox:0.0.1 -- -n <mqttBroker> -u username -p password -o server`
