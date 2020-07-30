@@ -8,4 +8,4 @@ This Node.js program allows synchronisation between a Owntracks system and the o
 
 ## Docker Installation
 
-    docker run --name <name> --link <omlox-container-name>:server owntracks-omlox:0.0.1 -- -n 192.168.0.164 -u username -p password -o server
+    docker run --name <name> --link <omlox-container-name>:server owntracks-omlox:0.0.1 -- -n <mqttBroker> -u username -p password -o server
