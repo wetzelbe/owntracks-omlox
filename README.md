@@ -18,11 +18,11 @@ Command-line-arguments are:
 
 
 ## Environment Variables
-`OMLOX_HOSTNAME`:
-`OMLOX_PORT`:
-`MQTT_HOSTNAME`:
-`MQTT_USERNAME`:
-`MQTT_PASSWORD`:
+`OMLOX_HOSTNAME`:  
+`OMLOX_PORT`:  
+`MQTT_HOSTNAME`:  
+`MQTT_USERNAME`:  
+`MQTT_PASSWORD`:  
 
 
 ## Docker Installation
