@@ -25,9 +25,9 @@ Command-line-arguments are:
 
 ## Docker Installation
 ### Build from Dockerfile
-You can build a Docker image using the given Dockerfile:
->cd owntracks-omlox
->docker build -t owntracks-omlox:0.0.1 .
+You can build a Docker image using the given Dockerfile:  
+>cd owntracks-omlox  
+>docker build -t owntracks-omlox:0.0.1 .  
 
 ### Run the image
 When the omlox hub is running in another Container on the same machine, you have to link the docker containers together:  
