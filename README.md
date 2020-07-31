@@ -10,10 +10,10 @@ To configure the system, you can either use command line arguments or you can us
 Command-line-arguments are:  
 * `-o`: hostname of the omlox hub, standard is localhost  
 * `-r`: port of the omlox hub, standard is 8081  
-* `-n`: hostname of the MQTT Broker, standard is localhost, port 1883 is used  
+* `-n`: hostname of the MQTT Broker, standard is localhost
 * `-q`: port of the MQTT Broker, standard is 1883  
 * `-u`: username for authentication, standard is using no authentication  
-* `-p`: password for authentication, standard is using no authentication (password and username have to be given together, otherwise the authentication will fail)  
+* `-p`: password for authentication, standard is using no authentication  
 
 
 ### Environment Variables
