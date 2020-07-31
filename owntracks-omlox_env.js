@@ -152,7 +152,7 @@ mqttclient.on('message', function (topic, message) {            // gets Location
 })
 
 wsclient.on('connectFailed', function (error) {
-    console.log('Connect Error: ' + error.toString())
+    console.log('[WebSocket]: Connect Error: ' + error.toString())
 })
 
 wsclient.on('connect', function (connection) {          // Gets Locations from Omlox
@@ -160,20 +160,21 @@ wsclient.on('connect', function (connection) {          // Gets Locations from O
         event: 'subscribe',
         topic: 'location_updates'
     }))
-    console.log('WebSocket Client Connected');
+    console.log('[WebSocket]: WebSocket Client Connected');
     connection.on('error', function (error) {
-        console.log("Connection Error: " + error.toString());
+        console.log("[WebSocket]: Connection Error: " + error.toString());
     })
     connection.on('close', function () {
-        console.log('Connection Closed');
+        console.log('[WebSocket]: Connection Closed');
     })
     connection.on('message', function (message) {
         if (JSON.parse(message.utf8Data).event == 'subscribed') {
-            console.log('Subscribed')
+            console.log('[WebSocket]: Subscribed')
         }
         else if (JSON.parse(message.utf8Data).event == 'message') {
             JSON.parse(message.utf8Data).payload.forEach(location => {
                 if (location.source != "owntracks") {
+                    connsole.log("[WebSocket]: Received Location from omlox")
                     console.log(location)
                     var omloxLocation = {
                         _type: "location",
