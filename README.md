@@ -7,7 +7,7 @@ To configure the system, you can either use command line arguments or you can us
 
 
 
-## Command Line Arguments
+### Command Line Arguments
 
 Command-line-arguments are:  
 * `-o`: hostname of the omlox hub, standard is localhost  
@@ -17,7 +17,7 @@ Command-line-arguments are:
 * `-p`: password for authentication, standard is using no authentication (password and username have to be given together, otherwise the authentication will fail)  
 
 
-## Environment Variables
+### Environment Variables
 * `OMLOX_HOSTNAME`: see `-o`  
 * `OMLOX_PORT`: see `-r`  
 * `MQTT_HOSTNAME`: see `-n`  
