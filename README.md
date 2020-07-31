@@ -11,6 +11,7 @@ Command-line-arguments are:
 * `-o`: hostname of the omlox hub, standard is localhost  
 * `-r`: port of the omlox hub, standard is 8081  
 * `-n`: hostname of the MQTT Broker, standard is localhost, port 1883 is used  
+* `-q`: port of the MQTT Broker, standard is 1883  
 * `-u`: username for authentication, standard is using no authentication  
 * `-p`: password for authentication, standard is using no authentication (password and username have to be given together, otherwise the authentication will fail)  
 
@@ -19,6 +20,7 @@ Command-line-arguments are:
 * `OMLOX_HOSTNAME`: see `-o`  
 * `OMLOX_PORT`: see `-r`  
 * `MQTT_HOSTNAME`: see `-n`  
+* `MQTT_PORT`: see `-q`  
 * `MQTT_USERNAME`: see `-u`  
 * `MQTT_PASSWORD`: see `-p`  
 
