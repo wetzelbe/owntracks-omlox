@@ -10,19 +10,19 @@ To configure the system, you can either use command line arguments or you can us
 ## Command Line Arguments
 
 Command-line-arguments are:  
-* `-o`: 'omlox-hostname'  
-* `-r`: 'omlox-port'  
-* `-n`: 'mqtt-hostname'  
-* `-u`: 'mqtt-username'  
-* `-p`: 'mqtt-password'  
+* `-o`: hostname of the omlox hub, standard is localhost  
+* `-r`: port of the omlox hub, standard is 8081  
+* `-n`: hostname of the MQTT Broker, standard is localhost, port 1883 is used  
+* `-u`: username for authentification, standard is using no authentification  
+* `-p`: password for authentification, standard is using no authentification (password and username have to be given together, otherwise the authentification will fail)  
 
 
 ## Environment Variables
-* `OMLOX_HOSTNAME`:  
-* `OMLOX_PORT`:  
-* `MQTT_HOSTNAME`:  
-* `MQTT_USERNAME`:  
-* `MQTT_PASSWORD`:  
+* `OMLOX_HOSTNAME`: see `-o`  
+* `OMLOX_PORT`: see `-r`  
+* `MQTT_HOSTNAME`: see `-n`  
+* `MQTT_USERNAME`: see `-u`  
+* `MQTT_PASSWORD`: see `-p`  
 
 
 ## Docker Installation
