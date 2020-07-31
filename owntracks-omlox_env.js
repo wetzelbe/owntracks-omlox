@@ -4,7 +4,7 @@
 //
 var mqtt = require('mqtt')
 var http = require('http')
-var mqttBroker = 'mqtt:localhost'  // MQTT Broker to connect to
+var mqttBroker = 'localhost'  // MQTT Broker to connect to
 var mqttPort = 1883
 var omloxhostname = 'localhost'
 var omloxport = 8081
@@ -191,4 +191,4 @@ wsclient.on('connect', function (connection) {          // Gets Locations from O
         }
     })
 })
-wsclient.connect('ws://localhost:8081/v1/ws/socket')        // Websocket connects to Omlox
+wsclient.connect('ws://' + omloxhostname + ':' + omloxport + '/v1/ws/socket')        // Websocket connects to Omlox
