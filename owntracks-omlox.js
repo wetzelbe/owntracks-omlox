@@ -31,6 +31,7 @@ function printOptions(optionsToPrint) {
 var options
 try {
     options = commandLineArgs(optionDefinitions)
+    console.log('[PROGRAM]: Given command line args are: ');
     console.log(options)
     if (options.hasOwnProperty('omlox-hostname')) {
         omloxhostname = options['omlox-hostname']
@@ -98,7 +99,7 @@ function buildHTTPReq(method, path) {
 }
 
 mqttclient.on('connect', function () {
-    console.log("Connected to " + mqttBroker)
+    console.log("[OWNTRACKS]: Connected to " + mqttBroker)
     mqttclient.subscribe('owntracks/#', function (err) {
         console.log(err)
     })
@@ -107,13 +108,10 @@ mqttclient.on('connect', function () {
 
 mqttclient.on('message', function (topic, message) {            // gets Locations from Owntracks
     // message is Buffer
-    console.log(topic)
+    console.log('[OWNTRACKS]: ' + topic)
     console.log(JSON.parse(message))
     var owntracksLocation = JSON.parse(message)
     var topicSplit = topic.split("/")
-    topicSplit.forEach(element => {
-        //console.log(element)
-    })
     var username = topicSplit[1]
     var device = topicSplit[2]
     if (owntracksLocation._type == "location" && username != "omlox") {
@@ -144,7 +142,7 @@ mqttclient.on('message', function (topic, message) {            // gets Location
         var updateLocation = buildHTTPReq('PUT', ('/v1/providers/' + owntracksLocation.tid + '/location'))
         updateLocation.headers['Content-Length'] = JSON.stringify(omloxLocation).length
         const loc = http.request(updateLocation, res => {
-            console.log('statusCode: %d', res.statusCode)
+            console.log('[OMLOX]: statusCode: %d', res.statusCode)
             var locdata = ''
             res.on('data', d => {
                 locdata = locdata + d
