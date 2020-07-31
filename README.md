@@ -5,8 +5,6 @@ This Node.js program allows synchronisation between a Owntracks system and the o
 
 To configure the system, you can either use command line arguments or you can use environment variables.  
 
-
-
 ### Command Line Arguments
 
 Command-line-arguments are:  
@@ -26,6 +24,11 @@ Command-line-arguments are:
 
 
 ## Docker Installation
+### Build from Dockerfile
+You can build a Docker image using the given Dockerfile:
+>cd owntracks-omlox
+>docker build -t owntracks-omlox:0.0.1 .
 
+### Run the image
 When the omlox hub is running in another Container on the same machine, you have to link the docker containers together:  
 >docker run --name name --link omlox-container-name:server owntracks-omlox:0.0.1 -- -n mqttBroker -u username -p password -o server
