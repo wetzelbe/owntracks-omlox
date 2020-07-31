@@ -6,6 +6,7 @@ var mqtt = require('mqtt')
 var http = require('http')
 var commandLineArgs = require('command-line-args')
 var mqttBroker = 'mqtt:localhost'  // MQTT Broker to connect to
+var mqttPort = 1883
 var omloxhostname = 'localhost'
 var omloxport = 8081
 var noauth = true
@@ -17,7 +18,8 @@ const optionDefinitions = [
     { name: 'omlox-port', alias: 'r', type: String },
     { name: 'mqtt-hostname', alias: 'n', type: String },
     { name: 'mqtt-username', alias: 'u', type: String },
-    { name: 'mqtt-password', alias: 'p', type: String }
+    { name: 'mqtt-password', alias: 'p', type: String },
+    { name: 'mqtt-port', alias: 'q', type: String }
 ]
 
 function printOptions(optionsToPrint) {
@@ -39,6 +41,9 @@ try {
     if (options.hasOwnProperty('mqtt-hostname')) {
         mqttBroker = options['mqtt-hostname']
     }
+    if (options.hasOwnProperty('mqtt-port')) {
+        mqttPort = options['mqtt-port']
+    }
     if (options.hasOwnProperty('mqtt-username') && options.hasOwnProperty('mqtt-password')) {
         noauth = false
         username = options['mqtt-username']
@@ -56,13 +61,13 @@ if (noauth) {
     console.log('in noauth = true')
     mqttclient = mqtt.connect({
         host: mqttBroker,
-        port: 1883
+        port: mqttPort
     })
 }
 else {
     mqttclient = mqtt.connect({
         host: mqttBroker,
-        port: 1883,
+        port: mqttPort,
         username: username,
         password: password
     })

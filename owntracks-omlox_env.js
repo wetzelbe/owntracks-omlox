@@ -5,6 +5,7 @@
 var mqtt = require('mqtt')
 var http = require('http')
 var mqttBroker = 'mqtt:localhost'  // MQTT Broker to connect to
+var mqttPort = 1883
 var omloxhostname = 'localhost'
 var omloxport = 8081
 var noauth = true
@@ -16,7 +17,8 @@ try {
                 OMLOX_PORT: process.env.OMLOX_PORT,
                 MQTT_HOSTNAME:process.env.MQTT_HOSTNAME,
                 MQTT_USERNAME:process.env.MQTT_USERNAME,
-                MQTT_PASSWORD:process.env.MQTT_PASSWORD})
+                MQTT_PASSWORD:process.env.MQTT_PASSWORD,
+                MQTT_PORT: process.env.MQTT_PORT})
     if (process.env.OMLOX_HOSTNAME != undefined) {
         omloxhostname = process.env.OMLOX_HOSTNAME
     }
@@ -25,6 +27,9 @@ try {
     }
     if (process.env.MQTT_HOSTNAME != undefined) {
         mqttBroker = process.env.MQTT_HOSTNAME
+    }
+    if (process.env.MQTT_PORT != undefined) {
+        mqttPort = process.env.MQTT_PORT
     }
     if (process.env.MQTT_USERNAME != undefined && process.env.MQTT_PASSWORD != undefined) {
         noauth = false
@@ -46,13 +51,13 @@ if (noauth) {
     console.log('in noauth = true')
     mqttclient = mqtt.connect({
         host: mqttBroker,
-        port: 1883
+        port: mqttPort
     })
 }
 else {
     mqttclient = mqtt.connect({
         host: mqttBroker,
-        port: 1883,
+        port: mqttPort,
         username: username,
         password: password
     })
