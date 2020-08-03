@@ -33,9 +33,10 @@ You can build a Docker image using the given Dockerfile:
 >docker build -t owntracks-omlox:0.0.1 .  
 
 ### Run the image
-When the omlox hub is running in another Container on the same machine, you have to use a network bridge to connect them:
+When the omlox hub is running in another Container on the same machine, you have to use a network bridge to connect them:  
+Create a network:  
 >docker network create omlox-network
-
+Connect the omlox-hub container to the network:  
 >docker network connect omlox-network omlox-hub-container-name
-
+Run the owntracks-omlox container connected to the network:  
 >docker run --name name --network omlox-network owntracks-omlox:0.0.1 -- -n mqttBroker -u username -p password -o omlox-hub-host
