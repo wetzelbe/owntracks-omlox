@@ -28,6 +28,39 @@ function printOptions(optionsToPrint) {
     })
 }
 
+
+try {
+    console.log('[PROGRAM]: environment variables are: ')
+    console.log({ OMLOX_HOSTNAME: process.env.OMLOX_HOSTNAME,
+                OMLOX_PORT: process.env.OMLOX_PORT,
+                MQTT_HOSTNAME:process.env.MQTT_HOSTNAME,
+                MQTT_USERNAME:process.env.MQTT_USERNAME,
+                MQTT_PASSWORD:process.env.MQTT_PASSWORD,
+                MQTT_PORT: process.env.MQTT_PORT})
+    if (process.env.OMLOX_HOSTNAME != undefined) {
+        omloxhostname = process.env.OMLOX_HOSTNAME
+    }
+    if (process.env.OMLOX_PORT != undefined) {
+        omloxport = process.env.OMLOX_PORT
+    }
+    if (process.env.MQTT_HOSTNAME != undefined) {
+        mqttBroker = process.env.MQTT_HOSTNAME
+    }
+    if (process.env.MQTT_PORT != undefined) {
+        mqttPort = process.env.MQTT_PORT
+    }
+    if (process.env.MQTT_USERNAME != undefined && process.env.MQTT_PASSWORD != undefined) {
+        noauth = false
+        username = process.env.MQTT_USERNAME
+        password = process.env.MQTT_PASSWORD
+    }
+} catch (error) {
+    console.log("Failed reading environment variables, exiting!")
+    console.log()
+    process.exit()
+}
+
+
 var options
 try {
     options = commandLineArgs(optionDefinitions)
