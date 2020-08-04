@@ -90,9 +90,7 @@ try {
     process.exit()
 }
 var mqttclient
-console.log(noauth)
 if (noauth) {
-    console.log('in noauth = true')
     mqttclient = mqtt.connect({
         host: mqttBroker,
         port: mqttPort
@@ -134,7 +132,8 @@ function buildHTTPReq(method, path) {
 mqttclient.on('connect', function () {
     console.log("[OWNTRACKS]: Connected to " + mqttBroker)
     mqttclient.subscribe('owntracks/#', function (err) {
-        console.log(err)
+        if (err != null)
+            console.log(err)
     })
 })
 
