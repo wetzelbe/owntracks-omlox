@@ -1,7 +1,7 @@
 version: '3'
 services: 
     owntracks-omlox:
-        image: owntracks-omlox:0.0.2
+        image: wetzelbe/owntracks-omlox:latest
         networks: 
             - common
         environment: 
