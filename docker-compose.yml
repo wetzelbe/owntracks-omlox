@@ -1,0 +1,23 @@
+version: '3'
+services: 
+    owntracks-omlox:
+        image: owntracks-omlox:0.0.2
+        networks: 
+            - common
+        environment: 
+            - OMLOX_HOSTNAME=omlox
+            - MQTT_HOSTNAME=mqtt
+    omlox:
+        image: omlox-hub
+        networks: 
+            - common
+        ports: 
+            - "8081:8081"
+    mqtt:
+        image: eclipse-mosquitto
+        networks: 
+            - common
+        ports: 
+            - "1883:1883"
+networks: 
+    common:
