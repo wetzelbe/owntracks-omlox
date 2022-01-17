@@ -1,6 +1,6 @@
 // Connects to a MQTT Broker, subscribes to all owntracks-messages and pushes all locations to the omlox hub.
 // It also connects to Omlox via a websocket and pushes all location updates, except for those which came from owntracks, to owntracks
-// Usage is node connectToOwntracksMQTTtwoWays.js
+// Usage is node owntracks-omlox.js
 //
 var mqtt = require('mqtt')
 var http = require('http')
