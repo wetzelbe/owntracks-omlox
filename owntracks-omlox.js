@@ -32,13 +32,15 @@ function printOptions(optionsToPrint) {
 
 try {
     console.log('[PROGRAM]: environment variables are: ')
-    console.log({ OMLOX_HOSTNAME: process.env.OMLOX_HOSTNAME,
-                OMLOX_PORT: process.env.OMLOX_PORT,
-                OMLOX_PATH_PREFIX: process.env.OMLOX_PATH_PREFIX,
-                MQTT_HOSTNAME:process.env.MQTT_HOSTNAME,
-                MQTT_USERNAME:process.env.MQTT_USERNAME,
-                MQTT_PASSWORD:process.env.MQTT_PASSWORD,
-                MQTT_PORT: process.env.MQTT_PORT})
+    console.log({
+        OMLOX_HOSTNAME: process.env.OMLOX_HOSTNAME,
+        OMLOX_PORT: process.env.OMLOX_PORT,
+        OMLOX_PATH_PREFIX: process.env.OMLOX_PATH_PREFIX,
+        MQTT_HOSTNAME: process.env.MQTT_HOSTNAME,
+        MQTT_USERNAME: process.env.MQTT_USERNAME,
+        MQTT_PASSWORD: process.env.MQTT_PASSWORD,
+        MQTT_PORT: process.env.MQTT_PORT
+    })
     if (process.env.OMLOX_HOSTNAME != undefined) {
         omloxhostname = process.env.OMLOX_HOSTNAME
     }
@@ -56,8 +58,7 @@ try {
         username = process.env.MQTT_USERNAME
         password = process.env.MQTT_PASSWORD
     }
-    if (process.env.OMLOX_PATH_PREFIX != undefined)
-    {
+    if (process.env.OMLOX_PATH_PREFIX != undefined) {
         pathprefix = process.env.OMLOX_PATH_PREFIX
     }
 } catch (error) {
@@ -177,7 +178,7 @@ mqttclient.on('message', function (topic, message) {            // gets Location
             omloxLocation.position.coordinates[2] = owntracksLocation.alt
         }
         console.log(omloxLocation)
-        var updateLocation = buildHTTPReq('PUT', ('/v1/providers/' + owntracksLocation.tid + '/location'))
+        var updateLocation = buildHTTPReq('PUT', (pathprefix + '/v1/providers/' + owntracksLocation.tid + '/location'))
         updateLocation.headers['Content-Length'] = JSON.stringify(omloxLocation).length
         const loc = http.request(updateLocation, res => {
             console.log('[OMLOX]: statusCode: %d', res.statusCode)
@@ -186,8 +187,10 @@ mqttclient.on('message', function (topic, message) {            // gets Location
                 locdata = locdata + d
             })
             res.on('end', () => {
-                if (locdata != "") {
+                try {
                     console.log(JSON.parse(locdata))
+                } catch (error) {
+
                 }
             })
         })
@@ -199,6 +202,7 @@ mqttclient.on('message', function (topic, message) {            // gets Location
 
 wsclient.on('connectFailed', function (error) {
     console.log('[WebSocket]: Connect Error: ' + error.toString())
+    process.exit(1)
 })
 
 wsclient.on('connect', function (connection) {          // Gets Locations from Omlox
