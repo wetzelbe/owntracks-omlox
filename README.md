@@ -4,7 +4,6 @@ This Node.js program allows synchronisation between a Owntracks system and the o
 ## :wrench: Configuration
 
 To configure the system, you can either use command line arguments or you can use environment variables.  
-If you want to configure using environment variables you'll have to change the package.json. In scripts/start change it from `node owntracks-omlox.js` to `node owntracks-omlox_env.js`.
 
 ### :computer: Command Line Arguments
 
