@@ -12,6 +12,7 @@ var omloxport = 8081
 var noauth = true
 var username
 var password
+var pathprefix = ""
 
 const optionDefinitions = [
     { name: 'omlox-hostname', alias: 'o', type: String },
@@ -33,6 +34,7 @@ try {
     console.log('[PROGRAM]: environment variables are: ')
     console.log({ OMLOX_HOSTNAME: process.env.OMLOX_HOSTNAME,
                 OMLOX_PORT: process.env.OMLOX_PORT,
+                OMLOX_PATH_PREFIX: process.env.OMLOX_PATH_PREFIX,
                 MQTT_HOSTNAME:process.env.MQTT_HOSTNAME,
                 MQTT_USERNAME:process.env.MQTT_USERNAME,
                 MQTT_PASSWORD:process.env.MQTT_PASSWORD,
@@ -53,6 +55,10 @@ try {
         noauth = false
         username = process.env.MQTT_USERNAME
         password = process.env.MQTT_PASSWORD
+    }
+    if (process.env.OMLOX_PATH_PREFIX != undefined)
+    {
+        pathprefix = process.env.OMLOX_PATH_PREFIX
     }
 } catch (error) {
     console.log("Failed reading environment variables, exiting!")
@@ -232,4 +238,4 @@ wsclient.on('connect', function (connection) {          // Gets Locations from O
         }
     })
 })
-wsclient.connect('ws://' + omloxhostname + ':' + omloxport + '/v1/ws/socket')        // Websocket connects to Omlox
+wsclient.connect('ws://' + omloxhostname + ':' + omloxport + pathprefix + '/v1/ws/socket')        // Websocket connects to Omlox
