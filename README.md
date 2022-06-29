@@ -1,5 +1,6 @@
 # :round_pushpin: owntracks-omlox
 This Node.js program allows synchronisation between a Owntracks system and the omlox hub. It will share positiondata in both directions.
+More information about omlox [here](https://omlox.com/home).
 
 ## :wrench: Configuration
 
