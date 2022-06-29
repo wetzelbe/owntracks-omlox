@@ -1,12 +1,12 @@
-# owntracks-omlox
+# :round_pushpin: owntracks-omlox
 This Node.js program allows synchronisation between a Owntracks system and the omlox hub. It will share positiondata in both directions.
 
-## Configuration
+## :wrench: Configuration
 
 To configure the system, you can either use command line arguments or you can use environment variables.  
 If you want to configure using environment variables you'll have to change the package.json. In scripts/start change it from `node owntracks-omlox.js` to `node owntracks-omlox_env.js`.
 
-### Command Line Arguments
+### :computer: Command Line Arguments
 
 Command-line-arguments are:  
 * `-o`: hostname of the omlox hub, standard is localhost  
@@ -17,9 +17,10 @@ Command-line-arguments are:
 * `-p`: password for authentication, standard is using no authentication  
 
 
-### Environment Variables
+### :mount_fuji: Environment Variables
 * `OMLOX_HOSTNAME`: see `-o`  
 * `OMLOX_PORT`: see `-r`  
+* `OMLOX_PATH_PREFIX`: set path that is added in front of API calls to omlox hub
 * `MQTT_HOSTNAME`: see `-n`  
 * `MQTT_PORT`: see `-q`  
 * `MQTT_USERNAME`: see `-u`  
@@ -27,12 +28,12 @@ Command-line-arguments are:
 
 
 ## Docker Installation
-### Build from Dockerfile
+### :construction: Build from Dockerfile
 You can build a Docker image using the given Dockerfile:  
 >cd owntracks-omlox  
 >docker build -t owntracks-omlox:0.0.1 .  
 
-### Run the image
+### :rocket: Run the image
 When the omlox hub is running in another Container on the same machine, you have to use a network bridge to connect them:  
 Create a network:  
 >docker network create omlox-network  
