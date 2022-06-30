@@ -2,5 +2,3 @@
 *.tar.gz
 /hub-web
 /hub-data
-/apache
-/apache2
